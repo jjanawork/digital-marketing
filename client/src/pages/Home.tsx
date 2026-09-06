@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Bot,
@@ -136,6 +136,29 @@ function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [demoRunning, setDemoRunning] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    const revealObserver = new IntersectionObserver(
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      }),
+      { threshold: 0.14, rootMargin: "0px 0px -8% 0px" },
+    );
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      revealObserver.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
   const copyInstall = async () => {
     await navigator.clipboard?.writeText("git clone https://github.com/indranilbanerjee/digital-marketing-pro.git");
@@ -151,7 +174,7 @@ function Home() {
   return (
     <main className="site-shell">
       <div className="grain" />
-      <header className="site-header">
+      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="container nav-wrap">
           <a className="brand" href="#top" aria-label="Digital Marketing Pro home">
             <span className="brand-mark"><Sparkles size={17} strokeWidth={2.5} /></span>
@@ -179,7 +202,7 @@ function Home() {
         <div className="hero-orbit orbit-one" />
         <div className="hero-orbit orbit-two" />
         <div className="container hero-grid">
-          <div className="hero-copy">
+          <div className="hero-copy" data-reveal="up">
             <div className="eyebrow"><span className="pulse-dot" /> Prism Technosys / marketing intelligence, reassembled</div>
             <h1>Make every marketing move <em>deliberate.</em></h1>
             <p className="hero-lede">Digital Marketing Pro is an AI operating system for modern growth teams — pairing specialized agents and execution tools with the experience design needed to turn strategy into a product people can use.</p>
@@ -189,7 +212,7 @@ function Home() {
             </div>
             <div className="hero-footnote"><ShieldCheck size={15} /> MIT licensed <span>·</span> Built for Claude Code, Codex, Cursor, and more</div>
           </div>
-          <div className="hero-visual" aria-label="A visual map of the marketing operating system">
+          <div className="hero-visual" data-reveal="scale" data-reveal-delay="2" aria-label="A visual map of the marketing operating system">
             <div className="visual-topline"><span><CircleDot size={13} /> SYSTEM STATUS</span><span className="status-live">● LIVE</span></div>
             <div className="visual-core">
               <div className="core-ring ring-outer" />
@@ -207,7 +230,7 @@ function Home() {
         <div className="container hero-ticker"><span>Built around the WAT framework</span><i /> <span>Workflows</span><ChevronRight size={14} /><span>Agents</span><ChevronRight size={14} /><span>Tools</span><i /> <span>From strategy to signal</span></div>
       </section>
 
-      <section className="stats-strip">
+      <section className="stats-strip" data-reveal="fade">
         <div className="container stats-grid">
           <div><strong>163</strong><span>reusable skills</span></div>
           <div><strong>24</strong><span>specialist agents</span></div>
@@ -217,27 +240,27 @@ function Home() {
         </div>
       </section>
 
-      <section className="section system-section" id="system">
+      <section className="section system-section" id="system" data-reveal="up">
         <div className="container">
           <div className="section-heading split-heading"><div><span className="section-kicker">01 / A complete system</span><h2>Not another prompt pack.<br /><span>A marketing operating system.</span></h2></div><p>Most AI tools give you a blank chat box. Digital Marketing Pro gives your team a shared context, a set of proven motions, and the specialists to carry them through.</p></div>
           <div className="wat-grid">
-            <div className="wat-card wat-workflows"><span className="wat-number">W</span><div className="wat-icon"><Layers3 size={23} /></div><h3>Workflows</h3><p>Structured paths for strategy, planning, execution, and learning — so good work compounds instead of disappearing in a thread.</p><a href="#workflow">Explore workflows <ArrowRight size={15} /></a></div>
-            <div className="wat-card wat-agents"><span className="wat-number">A</span><div className="wat-icon"><Network size={23} /></div><h3>Agents</h3><p>Role-based specialists that think in context. From SEO and content to CRM, paid media, and market intelligence.</p><a href="#capabilities">Meet the agents <ArrowRight size={15} /></a></div>
-            <div className="wat-card wat-tools"><span className="wat-number">T</span><div className="wat-icon"><Code2 size={23} /></div><h3>Tools</h3><p>Deterministic scripts for the work that needs to be repeatable, auditable, and ready to plug into your operating rhythm.</p><a href="#docs">Browse the tools <ArrowRight size={15} /></a></div>
+            <div className="wat-card wat-workflows" data-reveal="up" data-reveal-delay="0"><span className="wat-number">W</span><div className="wat-icon"><Layers3 size={23} /></div><h3>Workflows</h3><p>Structured paths for strategy, planning, execution, and learning — so good work compounds instead of disappearing in a thread.</p><a href="#workflow">Explore workflows <ArrowRight size={15} /></a></div>
+            <div className="wat-card wat-agents" data-reveal="up" data-reveal-delay="1"><span className="wat-number">A</span><div className="wat-icon"><Network size={23} /></div><h3>Agents</h3><p>Role-based specialists that think in context. From SEO and content to CRM, paid media, and market intelligence.</p><a href="#capabilities">Meet the agents <ArrowRight size={15} /></a></div>
+            <div className="wat-card wat-tools" data-reveal="up" data-reveal-delay="2"><span className="wat-number">T</span><div className="wat-icon"><Code2 size={23} /></div><h3>Tools</h3><p>Deterministic scripts for the work that needs to be repeatable, auditable, and ready to plug into your operating rhythm.</p><a href="#docs">Browse the tools <ArrowRight size={15} /></a></div>
           </div>
         </div>
       </section>
 
-      <section className="section capabilities-section" id="capabilities">
+      <section className="section capabilities-section" id="capabilities" data-reveal="up">
         <div className="container">
           <div className="section-heading"><span className="section-kicker">02 / Designed for the whole loop</span><h2>Think clearly. Ship faster.<br /><span>Learn continuously.</span></h2></div>
           <div className="capability-list">
-            {capabilities.map(({ icon: Icon, number, title, text, tags }) => <article className="capability-row" key={number}><div className="cap-number">{number}</div><div className="cap-icon"><Icon size={22} /></div><div className="cap-main"><h3>{title}</h3><p>{text}</p><div className="tag-list">{tags.map(tag => <span key={tag}>{tag}</span>)}</div></div><ArrowRight className="row-arrow" size={21} /></article>)}
+            {capabilities.map(({ icon: Icon, number, title, text, tags }, index) => <article className="capability-row" data-reveal="right" data-reveal-delay={index} key={number}><div className="cap-number">{number}</div><div className="cap-icon"><Icon size={22} /></div><div className="cap-main"><h3>{title}</h3><p>{text}</p><div className="tag-list">{tags.map(tag => <span key={tag}>{tag}</span>)}</div></div><ArrowRight className="row-arrow" size={21} /></article>)}
           </div>
         </div>
       </section>
 
-      <section className="section dark-section" id="workflow">
+      <section className="section dark-section" id="workflow" data-reveal="fade">
         <div className="container workflow-layout">
           <div className="workflow-copy"><span className="section-kicker warm-kicker">03 / The operating rhythm</span><h2>A loop that gets <em>smarter</em> every time.</h2><p>Start with signal. Move through strategy, activation, and measurement. Bring what you learn back into the system. That’s how AI becomes an advantage, not just an assistant.</p><button className="button button-light" onClick={runDemo}>{demoRunning ? <><span className="button-spinner" /> Running workflow</> : <><Play size={15} fill="currentColor" /> Run a sample workflow</>}</button></div>
           <div className="workflow-map">
@@ -247,29 +270,29 @@ function Home() {
         </div>
       </section>
 
-      <section className="section experience-section" id="experience">
+      <section className="section experience-section" id="experience" data-reveal="up">
         <div className="container experience-layout">
           <div className="experience-intro"><span className="section-kicker">04 / The experience layer</span><h2>Strategy is stronger when it <em>looks and feels</em> right.</h2><p>Prism Technosys brings a design and delivery lens to the system: thoughtful UX, expressive UI, useful websites, application surfaces, visual communication, and presentations that help ideas land.</p><div className="experience-rule"><span /><small>USER + BUSINESS + TECHNICAL REQUIREMENTS</small></div></div>
-          <div className="experience-grid">{experienceServices.map(({ icon: Icon, title, text, note }) => <article className="experience-card" key={title}><div className="experience-icon"><Icon size={20} /></div><h3>{title}</h3><p>{text}</p><span>{note}</span></article>)}</div>
+          <div className="experience-grid">{experienceServices.map(({ icon: Icon, title, text, note }, index) => <article className="experience-card" data-reveal="up" data-reveal-delay={index} key={title}><div className="experience-icon"><Icon size={20} /></div><h3>{title}</h3><p>{text}</p><span>{note}</span></article>)}</div>
         </div>
       </section>
 
-      <section className="section services-section" id="services">
+      <section className="section services-section" id="services" data-reveal="up">
         <div className="container">
           <div className="section-heading services-heading"><div><span className="section-kicker">05 / What we can offer</span><h2>Content, systems, and <span>the work between them.</span></h2></div><p>Bring a focused brief or a bigger operating challenge. These services combine strategic thinking, practical delivery, and AI-enabled execution.</p></div>
-          <div className="service-offer-grid">{serviceOffers.map(({ icon: Icon, title, text, tags }, index) => <article className="service-offer-card" key={title}><div className="service-offer-top"><span className="service-index">0{index + 1}</span><div className="service-offer-icon"><Icon size={19} /></div></div><h3>{title}</h3><p>{text}</p><div className="service-tags">{tags.map(tag => <span key={tag}>{tag}</span>)}</div></article>)}</div>
+          <div className="service-offer-grid">{serviceOffers.map(({ icon: Icon, title, text, tags }, index) => <article className="service-offer-card" data-reveal="up" data-reveal-delay={index % 3} key={title}><div className="service-offer-top"><span className="service-index">0{index + 1}</span><div className="service-offer-icon"><Icon size={19} /></div></div><h3>{title}</h3><p>{text}</p><div className="service-tags">{tags.map(tag => <span key={tag}>{tag}</span>)}</div></article>)}</div>
           <div className="service-bottom-line"><span>ENGAGEMENTS CAN START WITH A SINGLE CONTENT SPRINT OR A FULL DIGITAL GROWTH SYSTEM</span><a className="text-link" href="#docs">Start a conversation <ArrowRight size={15} /></a></div>
         </div>
       </section>
 
-      <section className="section modules-section">
+      <section className="section modules-section" data-reveal="up">
         <div className="container modules-layout">
           <div><span className="section-kicker">06 / Your team, amplified</span><h2>One system.<br /><span>Every growth motion.</span></h2><p className="modules-intro">Go deep where you need to, then connect the dots across the funnel. Each module arrives with its own skills, references, and execution patterns.</p><a className="text-link" href={GITHUB_URL} target="_blank" rel="noreferrer">See everything in GitHub <ArrowUpRightIcon /></a></div>
           <div className="module-cloud">{modules.map((module, index) => <div className={`module-chip chip-${index + 1}`} key={module}><span className="chip-index">0{index + 1}</span>{module}</div>)}<div className="module-orb"><Sparkles size={20} /><span>GROWTH<br /><b>GRAPH</b></span></div></div>
         </div>
       </section>
 
-      <section className="section docs-section" id="docs">
+      <section className="section docs-section" id="docs" data-reveal="up">
         <div className="container docs-card"><div className="docs-copy"><span className="section-kicker">07 / Start where you are</span><h2>Your next best<br /><span>marketing move</span> is waiting.</h2><p>Clone the open-source repo, bring your brand context, and let the system do the heavy lifting. No black box. No lock-in.</p><a className="button button-primary" href={GITHUB_URL} target="_blank" rel="noreferrer">Read the documentation <ArrowRight size={16} /></a></div><div className="terminal"><div className="terminal-bar"><span className="terminal-dots"><i /><i /><i /></span><span>terminal</span><span className="terminal-path">~/projects</span></div><div className="terminal-body"><div><span className="terminal-muted">$</span> git clone <span className="terminal-accent">github.com/indranilbanerjee/digital-marketing-pro</span></div><div><span className="terminal-muted">$</span> cd digital-marketing-pro</div><div><span className="terminal-muted">$</span> /dmp <span className="terminal-accent">brand-setup</span></div><div className="terminal-result"><Check size={14} /> Brand intelligence loaded</div><div className="terminal-result"><Check size={14} /> Agent team standing by</div><div className="terminal-result"><Check size={14} /> Ready to make your next move<span className="blink-cursor">▍</span></div></div></div></div>
       </section>
 
