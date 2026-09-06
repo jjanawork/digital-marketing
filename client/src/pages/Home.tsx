@@ -189,7 +189,6 @@ function Home() {
             <a href="#docs" onClick={() => setMenuOpen(false)}>Docs</a>
           </nav>
           <div className="nav-actions">
-            <a className="github-link" href={GITHUB_URL} target="_blank" rel="noreferrer"><Github size={16} /> GitHub <span className="github-stars">★ Open source</span></a>
             <a className="button button-small button-dark" href="#get-started">Get started <ArrowRight size={15} /></a>
             <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">
               {menuOpen ? <X size={21} /> : <Menu size={21} />}
