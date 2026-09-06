@@ -115,3 +115,22 @@ h1 em, h2 em { font-style: normal; color: var(--blue); }
 /* Tailwind token compatibility for the scaffold's shared components. */
 @theme inline { --color-background: var(--background); --color-foreground: var(--foreground); --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground); }
 @layer base { * { border-color: var(--line); } }
+
+
+/* Prism Technosys experience layer */
+.experience-section { padding-top: 108px; background: #f8f5ef; }
+.experience-layout { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 76px; }
+.experience-intro h2 { max-width: 460px; margin: 0; color: var(--navy); font: 600 clamp(35px, 4.2vw, 54px)/1.04 var(--display); letter-spacing: -.07em; }
+.experience-intro h2 em { color: var(--orange); }
+.experience-intro p { max-width: 410px; margin: 25px 0 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.experience-rule { display: flex; align-items: center; gap: 10px; margin-top: 34px; color: #9b8b7e; font: 9px var(--mono); letter-spacing: .06em; }
+.experience-rule span { width: 29px; height: 1px; background: var(--orange); }
+.experience-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.experience-card { min-height: 224px; padding: 23px 22px 20px; border: 1px solid rgba(18,35,52,.11); border-radius: 6px; background: rgba(255,255,255,.58); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.experience-card:hover { transform: translateY(-4px); border-color: rgba(237,155,101,.4); box-shadow: 0 18px 32px rgba(95,75,56,.09); }
+.experience-icon { display: grid; place-items: center; width: 39px; height: 39px; margin-bottom: 28px; color: var(--orange); border: 1px solid rgba(237,155,101,.35); border-radius: 5px; background: rgba(237,155,101,.11); }
+.experience-card h3 { margin: 0 0 9px; color: var(--navy); font: 500 18px var(--display); letter-spacing: -.04em; }
+.experience-card p { margin: 0; color: #6d7781; font-size: 12px; line-height: 1.55; }
+.experience-card > span { display: block; margin-top: 17px; color: #a08067; font: 9px var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+@media (max-width: 900px) { .experience-layout { gap: 45px; } }
+@media (max-width: 720px) { .experience-section { padding-top: 79px; }.experience-layout { display: block; }.experience-intro p { margin-top: 21px; }.experience-rule { margin-top: 27px; }.experience-grid { margin-top: 40px; }.experience-card { min-height: 205px; }.experience-icon { margin-bottom: 21px; } }

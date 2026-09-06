@@ -48,6 +48,33 @@ const capabilities = [
   },
 ];
 
+const experienceServices = [
+  {
+    icon: Globe2,
+    title: "Experience design",
+    text: "User experience, interface systems, and prototypes shaped around the meeting point of user, business, and technical requirements.",
+    note: "UX / UI / product thinking",
+  },
+  {
+    icon: Code2,
+    title: "Websites & applications",
+    text: "Web and application experiences that turn a first impression into a clear, useful, and memorable path through the brand.",
+    note: "Web experiences / application surfaces",
+  },
+  {
+    icon: Sparkles,
+    title: "Visual communication",
+    text: "Graphic design and marketing collateral that make campaigns, launches, and brand systems feel consistent wherever they show up.",
+    note: "Brand / digital / print",
+  },
+  {
+    icon: Terminal,
+    title: "Corporate presentations",
+    text: "Structured visual narratives that give teams the clarity and confidence to communicate important ideas with impact.",
+    note: "Story / structure / persuasion",
+  },
+];
+
 const modules = [
   "Content engine",
   "Campaign orchestration",
@@ -95,6 +122,7 @@ function Home() {
             <a href="#system" onClick={() => setMenuOpen(false)}>The system</a>
             <a href="#capabilities" onClick={() => setMenuOpen(false)}>Capabilities</a>
             <a href="#workflow" onClick={() => setMenuOpen(false)}>How it works</a>
+            <a href="#experience" onClick={() => setMenuOpen(false)}>Experience</a>
             <a href="#docs" onClick={() => setMenuOpen(false)}>Docs</a>
           </nav>
           <div className="nav-actions">
@@ -112,9 +140,9 @@ function Home() {
         <div className="hero-orbit orbit-two" />
         <div className="container hero-grid">
           <div className="hero-copy">
-            <div className="eyebrow"><span className="pulse-dot" /> Open-source marketing intelligence, reassembled</div>
+            <div className="eyebrow"><span className="pulse-dot" /> Prism Technosys / marketing intelligence, reassembled</div>
             <h1>Make every marketing move <em>deliberate.</em></h1>
-            <p className="hero-lede">Digital Marketing Pro is an AI operating system for modern growth teams — a living playbook of specialized agents, reusable skills, and execution tools.</p>
+            <p className="hero-lede">Digital Marketing Pro is an AI operating system for modern growth teams — pairing specialized agents and execution tools with the experience design needed to turn strategy into a product people can use.</p>
             <div className="hero-actions" id="get-started">
               <a className="button button-primary" href={GITHUB_URL} target="_blank" rel="noreferrer"><Github size={17} /> Explore the repo <ArrowRight size={16} /></a>
               <button className="button button-quiet" onClick={copyInstall}>{copied ? <Check size={16} /> : <Copy size={16} />} {copied ? "Copied" : "Copy install command"}</button>
@@ -179,18 +207,25 @@ function Home() {
         </div>
       </section>
 
+      <section className="section experience-section" id="experience">
+        <div className="container experience-layout">
+          <div className="experience-intro"><span className="section-kicker">04 / The experience layer</span><h2>Strategy is stronger when it <em>looks and feels</em> right.</h2><p>Prism Technosys brings a design and delivery lens to the system: thoughtful UX, expressive UI, useful websites, application surfaces, visual communication, and presentations that help ideas land.</p><div className="experience-rule"><span /><small>USER + BUSINESS + TECHNICAL REQUIREMENTS</small></div></div>
+          <div className="experience-grid">{experienceServices.map(({ icon: Icon, title, text, note }) => <article className="experience-card" key={title}><div className="experience-icon"><Icon size={20} /></div><h3>{title}</h3><p>{text}</p><span>{note}</span></article>)}</div>
+        </div>
+      </section>
+
       <section className="section modules-section">
         <div className="container modules-layout">
-          <div><span className="section-kicker">04 / Your team, amplified</span><h2>One system.<br /><span>Every growth motion.</span></h2><p className="modules-intro">Go deep where you need to, then connect the dots across the funnel. Each module arrives with its own skills, references, and execution patterns.</p><a className="text-link" href={GITHUB_URL} target="_blank" rel="noreferrer">See everything in GitHub <ArrowUpRightIcon /></a></div>
+          <div><span className="section-kicker">05 / Your team, amplified</span><h2>One system.<br /><span>Every growth motion.</span></h2><p className="modules-intro">Go deep where you need to, then connect the dots across the funnel. Each module arrives with its own skills, references, and execution patterns.</p><a className="text-link" href={GITHUB_URL} target="_blank" rel="noreferrer">See everything in GitHub <ArrowUpRightIcon /></a></div>
           <div className="module-cloud">{modules.map((module, index) => <div className={`module-chip chip-${index + 1}`} key={module}><span className="chip-index">0{index + 1}</span>{module}</div>)}<div className="module-orb"><Sparkles size={20} /><span>GROWTH<br /><b>GRAPH</b></span></div></div>
         </div>
       </section>
 
       <section className="section docs-section" id="docs">
-        <div className="container docs-card"><div className="docs-copy"><span className="section-kicker">05 / Start where you are</span><h2>Your next best<br /><span>marketing move</span> is waiting.</h2><p>Clone the open-source repo, bring your brand context, and let the system do the heavy lifting. No black box. No lock-in.</p><a className="button button-primary" href={GITHUB_URL} target="_blank" rel="noreferrer">Read the documentation <ArrowRight size={16} /></a></div><div className="terminal"><div className="terminal-bar"><span className="terminal-dots"><i /><i /><i /></span><span>terminal</span><span className="terminal-path">~/projects</span></div><div className="terminal-body"><div><span className="terminal-muted">$</span> git clone <span className="terminal-accent">github.com/indranilbanerjee/digital-marketing-pro</span></div><div><span className="terminal-muted">$</span> cd digital-marketing-pro</div><div><span className="terminal-muted">$</span> /dmp <span className="terminal-accent">brand-setup</span></div><div className="terminal-result"><Check size={14} /> Brand intelligence loaded</div><div className="terminal-result"><Check size={14} /> Agent team standing by</div><div className="terminal-result"><Check size={14} /> Ready to make your next move<span className="blink-cursor">▍</span></div></div></div></div>
+        <div className="container docs-card"><div className="docs-copy"><span className="section-kicker">06 / Start where you are</span><h2>Your next best<br /><span>marketing move</span> is waiting.</h2><p>Clone the open-source repo, bring your brand context, and let the system do the heavy lifting. No black box. No lock-in.</p><a className="button button-primary" href={GITHUB_URL} target="_blank" rel="noreferrer">Read the documentation <ArrowRight size={16} /></a></div><div className="terminal"><div className="terminal-bar"><span className="terminal-dots"><i /><i /><i /></span><span>terminal</span><span className="terminal-path">~/projects</span></div><div className="terminal-body"><div><span className="terminal-muted">$</span> git clone <span className="terminal-accent">github.com/indranilbanerjee/digital-marketing-pro</span></div><div><span className="terminal-muted">$</span> cd digital-marketing-pro</div><div><span className="terminal-muted">$</span> /dmp <span className="terminal-accent">brand-setup</span></div><div className="terminal-result"><Check size={14} /> Brand intelligence loaded</div><div className="terminal-result"><Check size={14} /> Agent team standing by</div><div className="terminal-result"><Check size={14} /> Ready to make your next move<span className="blink-cursor">▍</span></div></div></div></div>
       </section>
 
-      <footer className="site-footer"><div className="container footer-main"><div className="footer-brand"><a className="brand" href="#top"><span className="brand-mark"><Sparkles size={17} strokeWidth={2.5} /></span><span>digital marketing <b>pro</b></span></a><p>An open-source AI marketing operating system for teams that want to move with intent.</p></div><div className="footer-links"><div><span>Explore</span><a href="#system">The system</a><a href="#capabilities">Capabilities</a><a href="#workflow">How it works</a></div><div><span>Resources</span><a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub repository</a><a href={`${GITHUB_URL}#readme`} target="_blank" rel="noreferrer">Documentation</a><a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noreferrer">MIT license</a></div></div></div><div className="container footer-bottom"><span>© 2026 Digital Marketing Pro</span><span>Built in public <span className="footer-dot">●</span> for modern growth teams</span><a href="#top">Back to top ↑</a></div></footer>
+      <footer className="site-footer"><div className="container footer-main"><div className="footer-brand"><a className="brand" href="#top"><span className="brand-mark"><Sparkles size={17} strokeWidth={2.5} /></span><span>digital marketing <b>pro</b></span></a><p>AI marketing systems and experience design for teams that want to move with intent.</p></div><div className="footer-links"><div><span>Explore</span><a href="#system">The system</a><a href="#capabilities">Capabilities</a><a href="#experience">Experience layer</a></div><div><span>Resources</span><a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub repository</a><a href={`${GITHUB_URL}#readme`} target="_blank" rel="noreferrer">Documentation</a><a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noreferrer">MIT license</a></div></div></div><div className="container footer-bottom"><span>© 2026 Digital Marketing Pro</span><span>Built in public <span className="footer-dot">●</span> for modern growth teams</span><a href="#top">Back to top ↑</a></div></footer>
     </main>
   );
 }
