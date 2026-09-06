@@ -75,6 +75,45 @@ const experienceServices = [
   },
 ];
 
+const serviceOffers = [
+  {
+    icon: Search,
+    title: "SEO content systems",
+    text: "Keyword research, search-led content planning, on-page optimization, technical recommendations, and performance reporting built around measurable growth.",
+    tags: ["SEO", "Content strategy", "Analytics"],
+  },
+  {
+    icon: Sparkles,
+    title: "AI content operations",
+    text: "AI-assisted workflows for briefs, blogs, product copy, campaigns, and review loops — faster production without losing voice, quality, or control.",
+    tags: ["Gen AI", "Workflows", "Quality gates"],
+  },
+  {
+    icon: Globe2,
+    title: "E-commerce content",
+    text: "Product descriptions, category content, merchandising copy, promotional campaigns, and structured content systems for large catalogs and digital storefronts.",
+    tags: ["Product copy", "Catalogs", "Conversion"],
+  },
+  {
+    icon: Code2,
+    title: "AI-driven apps & automation",
+    text: "Lean digital tools, dashboards, and internal apps that connect content, data, and repeatable processes into a more useful operating layer.",
+    tags: ["Vibe coding", "App concepts", "Automation"],
+  },
+  {
+    icon: Radio,
+    title: "Conversion copy & campaigns",
+    text: "Website copy, email campaigns, social content, launch messaging, sales enablement, and product storytelling designed to move audiences to action.",
+    tags: ["Copywriting", "Email", "Social"],
+  },
+  {
+    icon: ShieldCheck,
+    title: "Research-led technical content",
+    text: "Clear, compliant content for complex topics across SaaS, cloud, AI, finance, banking, engineering, and other specialist industries.",
+    tags: ["B2B", "Compliance", "Thought leadership"],
+  },
+];
+
 const modules = [
   "Content engine",
   "Campaign orchestration",
@@ -123,6 +162,7 @@ function Home() {
             <a href="#capabilities" onClick={() => setMenuOpen(false)}>Capabilities</a>
             <a href="#workflow" onClick={() => setMenuOpen(false)}>How it works</a>
             <a href="#experience" onClick={() => setMenuOpen(false)}>Experience</a>
+            <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
             <a href="#docs" onClick={() => setMenuOpen(false)}>Docs</a>
           </nav>
           <div className="nav-actions">
@@ -214,18 +254,26 @@ function Home() {
         </div>
       </section>
 
+      <section className="section services-section" id="services">
+        <div className="container">
+          <div className="section-heading services-heading"><div><span className="section-kicker">05 / What we can offer</span><h2>Content, systems, and <span>the work between them.</span></h2></div><p>Bring a focused brief or a bigger operating challenge. These services combine strategic thinking, practical delivery, and AI-enabled execution.</p></div>
+          <div className="service-offer-grid">{serviceOffers.map(({ icon: Icon, title, text, tags }, index) => <article className="service-offer-card" key={title}><div className="service-offer-top"><span className="service-index">0{index + 1}</span><div className="service-offer-icon"><Icon size={19} /></div></div><h3>{title}</h3><p>{text}</p><div className="service-tags">{tags.map(tag => <span key={tag}>{tag}</span>)}</div></article>)}</div>
+          <div className="service-bottom-line"><span>ENGAGEMENTS CAN START WITH A SINGLE CONTENT SPRINT OR A FULL DIGITAL GROWTH SYSTEM</span><a className="text-link" href="#docs">Start a conversation <ArrowRight size={15} /></a></div>
+        </div>
+      </section>
+
       <section className="section modules-section">
         <div className="container modules-layout">
-          <div><span className="section-kicker">05 / Your team, amplified</span><h2>One system.<br /><span>Every growth motion.</span></h2><p className="modules-intro">Go deep where you need to, then connect the dots across the funnel. Each module arrives with its own skills, references, and execution patterns.</p><a className="text-link" href={GITHUB_URL} target="_blank" rel="noreferrer">See everything in GitHub <ArrowUpRightIcon /></a></div>
+          <div><span className="section-kicker">06 / Your team, amplified</span><h2>One system.<br /><span>Every growth motion.</span></h2><p className="modules-intro">Go deep where you need to, then connect the dots across the funnel. Each module arrives with its own skills, references, and execution patterns.</p><a className="text-link" href={GITHUB_URL} target="_blank" rel="noreferrer">See everything in GitHub <ArrowUpRightIcon /></a></div>
           <div className="module-cloud">{modules.map((module, index) => <div className={`module-chip chip-${index + 1}`} key={module}><span className="chip-index">0{index + 1}</span>{module}</div>)}<div className="module-orb"><Sparkles size={20} /><span>GROWTH<br /><b>GRAPH</b></span></div></div>
         </div>
       </section>
 
       <section className="section docs-section" id="docs">
-        <div className="container docs-card"><div className="docs-copy"><span className="section-kicker">06 / Start where you are</span><h2>Your next best<br /><span>marketing move</span> is waiting.</h2><p>Clone the open-source repo, bring your brand context, and let the system do the heavy lifting. No black box. No lock-in.</p><a className="button button-primary" href={GITHUB_URL} target="_blank" rel="noreferrer">Read the documentation <ArrowRight size={16} /></a></div><div className="terminal"><div className="terminal-bar"><span className="terminal-dots"><i /><i /><i /></span><span>terminal</span><span className="terminal-path">~/projects</span></div><div className="terminal-body"><div><span className="terminal-muted">$</span> git clone <span className="terminal-accent">github.com/indranilbanerjee/digital-marketing-pro</span></div><div><span className="terminal-muted">$</span> cd digital-marketing-pro</div><div><span className="terminal-muted">$</span> /dmp <span className="terminal-accent">brand-setup</span></div><div className="terminal-result"><Check size={14} /> Brand intelligence loaded</div><div className="terminal-result"><Check size={14} /> Agent team standing by</div><div className="terminal-result"><Check size={14} /> Ready to make your next move<span className="blink-cursor">▍</span></div></div></div></div>
+        <div className="container docs-card"><div className="docs-copy"><span className="section-kicker">07 / Start where you are</span><h2>Your next best<br /><span>marketing move</span> is waiting.</h2><p>Clone the open-source repo, bring your brand context, and let the system do the heavy lifting. No black box. No lock-in.</p><a className="button button-primary" href={GITHUB_URL} target="_blank" rel="noreferrer">Read the documentation <ArrowRight size={16} /></a></div><div className="terminal"><div className="terminal-bar"><span className="terminal-dots"><i /><i /><i /></span><span>terminal</span><span className="terminal-path">~/projects</span></div><div className="terminal-body"><div><span className="terminal-muted">$</span> git clone <span className="terminal-accent">github.com/indranilbanerjee/digital-marketing-pro</span></div><div><span className="terminal-muted">$</span> cd digital-marketing-pro</div><div><span className="terminal-muted">$</span> /dmp <span className="terminal-accent">brand-setup</span></div><div className="terminal-result"><Check size={14} /> Brand intelligence loaded</div><div className="terminal-result"><Check size={14} /> Agent team standing by</div><div className="terminal-result"><Check size={14} /> Ready to make your next move<span className="blink-cursor">▍</span></div></div></div></div>
       </section>
 
-      <footer className="site-footer"><div className="container footer-main"><div className="footer-brand"><a className="brand" href="#top"><span className="brand-mark"><Sparkles size={17} strokeWidth={2.5} /></span><span>digital marketing <b>pro</b></span></a><p>AI marketing systems and experience design for teams that want to move with intent.</p></div><div className="footer-links"><div><span>Explore</span><a href="#system">The system</a><a href="#capabilities">Capabilities</a><a href="#experience">Experience layer</a></div><div><span>Resources</span><a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub repository</a><a href={`${GITHUB_URL}#readme`} target="_blank" rel="noreferrer">Documentation</a><a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noreferrer">MIT license</a></div></div></div><div className="container footer-bottom"><span>© 2026 Digital Marketing Pro</span><span>Built in public <span className="footer-dot">●</span> for modern growth teams</span><a href="#top">Back to top ↑</a></div></footer>
+      <footer className="site-footer"><div className="container footer-main"><div className="footer-brand"><a className="brand" href="#top"><span className="brand-mark"><Sparkles size={17} strokeWidth={2.5} /></span><span>digital marketing <b>pro</b></span></a><p>AI marketing systems and experience design for teams that want to move with intent.</p></div><div className="footer-links"><div><span>Explore</span><a href="#system">The system</a><a href="#capabilities">Capabilities</a><a href="#experience">Experience layer</a><a href="#services">Services</a></div><div><span>Resources</span><a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub repository</a><a href={`${GITHUB_URL}#readme`} target="_blank" rel="noreferrer">Documentation</a><a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noreferrer">MIT license</a></div></div></div><div className="container footer-bottom"><span>© 2026 Digital Marketing Pro</span><span>Built in public <span className="footer-dot">●</span> for modern growth teams</span><a href="#top">Back to top ↑</a></div></footer>
     </main>
   );
 }
